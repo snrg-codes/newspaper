@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kunlik Ilhom</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 2em;
+        }
+
+        #message-box {
+            background-color: #e9ecef;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            min-height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ced4da;
+        }
+
+        #message-text {
+            font-size: 1.2em;
+            color: #495057;
+            line-height: 1.6;
+        }
+
+        #new-message-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        #new-message-btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        #new-message-btn:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kunlik Ilhom</h1>
+        <div id="message-box">
+            <p id="message-text">Boshlash uchun tugmani bosing!</p>
+        </div>
+        <button id="new-message-btn">Yangi Fikr</button>
+    </div>
+
+    <script>
+        const messages = [
+            "Har bir yangi kun - bu yangi imkoniyat.",
+            "O'zingizga ishoning, shunda hamma narsa mumkin bo'ladi.",
+            "Kichik qadamlar katta muvaffaqiyatlarga olib keladi.",
+            "Bugungi kuningizni tabassum bilan boshlang.",
+            "Eng yaxshi narsalar hali oldinda.",
+            "Hech qachon orzu qilishdan to'xtamang.",
+            "Sabr - muvaffaqiyat kalitidir.",
+            "Har bir qiyinchilik ortida bir imkoniyat yashiringan.",
+            "O'rganishdan va o'sishdan charchamang.",
+            "Ezgulik ulashing, u sizga qaytadi.",
+            "Maqsadingiz sari dadil qadam tashlang.",
+            "Har bir urinish sizni maqsadga yaqinlashtiradi.",
+            "Ijobiy fikrlash mo''jizalar yaratadi.",
+            "O'tmishni qo'yib yuboring, kelajakka intiling.",
+            "Eng katta boylik - bu bilim va tajriba."
+        ];
+
+        const messageTextElement = document.getElementById('message-text');
+        const newMessageBtn = document.getElementById('new-message-btn');
+
+        let lastMessageIndex = -1; // Oldingi xabarni takrorlamaslik uchun
+
+        function getRandomMessage() {
+            if (messages.length === 0) {
+                return "Hozircha xabarlar yo'q.";
+            }
+            if (messages.length === 1) {
+                return messages[0];
+            }
+
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * messages.length);
+            } while (randomIndex === lastMessageIndex);
+            
+            lastMessageIndex = randomIndex;
+            return messages[randomIndex];
+        }
+
+        function displayNewMessage() {
+            const newMessage = getRandomMessage();
+            messageTextElement.textContent = newMessage;
+        }
+
+        newMessageBtn.addEventListener('click', displayNewMessage);
+    </script>
+</body>
+</html>
